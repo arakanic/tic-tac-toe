@@ -1,9 +1,10 @@
-/* Box Model Hack */
+/* Box Model */
 * {
   box-sizing: border-box;
+  font-family: 'Sriracha', cursive;
 }
 
-/* Clear fix hack */
+/* Clear fix */
 .clearfix:after {
      content: ".";
      display: block;
@@ -17,47 +18,80 @@
 	clear: both;
 }
 
-/******************************************
-/* BASE STYLES
-/*******************************************/
-
 body {
-
+  width: 400px;
+  margin: 0 auto;
 }
 
-
-/******************************************
-/* LAYOUT
-/*******************************************/
-#board {
+/* Layout */
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: 300px;
-  height: 300px;
-  margin: auto;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
  }
 
 .space {
-  border: 1px solid #888;
+  border: 1px solid rgb(226, 226, 226);
   margin: 0;
-  padding: 0;
-  font-size: 84px;
+  padding-left: 2rem;
+  font-size: 7rem;
+  color: rgb(84, 84, 161);
+  /* color: rgb(228, 226, 205); */
   transition: all 0.15s ease-out;
 }
 
 .space:hover {
   background-color: #efe;
-  box-shadow: 2px 2px 2px #ddd;
+  box-shadow: 1px 1px 7px #ddd;
   cursor: pointer;
 }
 
-.space span {
-  margin-left: 23px;
-  font-family: 'Sriracha', cursive;
-  color: rgb(44, 44, 97);
+.grid div:nth-child(1) {
+  border-radius: 12px 0 0 0;
 }
 
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+.grid div:nth-child(3) {
+  border-radius: 0 12px 0 0;
+}
+
+.grid div:nth-child(7) {
+  border-radius: 0 0 0 12px;
+}
+
+.grid div:nth-child(9) {
+  border-radius: 0 0 12px 0;
+}
+
+
+#marquee, #restart {
+  display: flex;
+  justify-content: center;
+}
+
+#marquee {
+  font-family: 'Roboto', sans-serif;
+  font-size: 7rem;
+  color: rgb(84, 84, 161);
+  margin: 0 auto;
+}
+
+#restart {
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem auto;
+  color: rgb(141, 173, 141);
+  animation: spin 1s ease-in-out infinite;
+  animation-play-state: paused; 
+}
+
+#restart:hover {
+  cursor: pointer;
+  animation-play-state: running;
+}
+
+@keyframes spin {
+  100% {transform: rotate(2turn); }
+}
